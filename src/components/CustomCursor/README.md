@@ -1,0 +1,1 @@
+自定义cursor，遇到可点击元素产生收缩效果，可以通过`data-cursor="pointer"`标记可点击元素，然后在mousemove事件中判断`e.target`是否含有`data-cursor`。

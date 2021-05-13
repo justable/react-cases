@@ -1,0 +1,1 @@
+主要原理就是`background-attachment: fixed;`属性，水纹效果就是多张同个图片的同个位置进行略微放大所产生的。

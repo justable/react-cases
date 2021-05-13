@@ -1,0 +1,22 @@
+:global {
+  body {
+    cursor: url(https://web.hycdn.cn/arknights/official/static/cursor-inner.1d69419cb78ed4579ad9.png)
+        3 3,
+      default;
+  }
+}
+.cursorContainer {
+  position: absolute;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s;
+  .cursorOuter {
+    position: fixed;
+    border-radius: 50%;
+    z-index: 999999;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--cursorBorder);
+    transition: background-color 0.3s, width 0.3s, height 0.3s;
+  }
+}

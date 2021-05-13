@@ -1,0 +1,97 @@
+@img: 'https://images.unsplash.com/photo-1530053969600-caed2596d242?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80';
+@img2: 'https://images.unsplash.com/photo-1440688807730-73e4e2169fb8?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=';
+@img3: 'https://images.unsplash.com/photo-1464692805480-a69dfaafdb0d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80';
+@img4: 'https://images.unsplash.com/photo-1498940757830-82f7813bf178?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80';
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(@img4);
+  background-attachment: fixed;
+  background-position: center center;
+  //   background-size: cover;
+  background-size: 100% auto;
+  overflow: hidden;
+  cursor: inherit;
+}
+
+.waveBlock {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+}
+
+.wave {
+  position: absolute;
+  top: calc((100% - 30px) / 2);
+  left: calc((100% - 30px) / 2);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: url(@img4);
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: 100% auto;
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.wave0 {
+  z-index: 2;
+  background-size: 106% auto;
+  animation: wave 1s ease-out 0.1s;
+  animation-fill-mode: forwards;
+}
+.wave1 {
+  z-index: 3;
+  background-size: 102% auto;
+  animation: wave 1s ease-out 0.2s;
+  animation-fill-mode: forwards;
+}
+.wave2 {
+  z-index: 4;
+  background-size: 104% auto;
+  animation: wave 1s ease-out 0.4s;
+  animation-fill-mode: forwards;
+}
+.wave3 {
+  z-index: 5;
+  background-size: 101% auto;
+  animation: wave 1s ease-out 0.6s;
+  animation-fill-mode: forwards;
+}
+.wave4 {
+  z-index: 6;
+  background-size: 102% auto;
+  animation: wave 1s ease-out 0.8s;
+  animation-fill-mode: forwards;
+}
+.wave5 {
+  z-index: 7;
+  background-size: 100% auto;
+  animation: wave 1s ease-out 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes wave {
+  0% {
+    top: calc((100% - 30px) / 2);
+    left: calc((100% - 30px) / 2);
+    width: 30px;
+    height: 30px;
+    opacity: 0.1;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    top: calc((100% - 300px) / 2);
+    left: calc((100% - 300px) / 2);
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}

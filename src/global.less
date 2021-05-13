@@ -1,0 +1,139 @@
+@import '~antd/es/style/themes/default.less';
+
+// :global {
+// }
+:root {
+  // 默认dark
+  --bg: #111;
+  --menuBG: rgba(255, 255, 255, 0.08);
+  --menuFontColor: #fff;
+  --menuArrowBG: #fff;
+  --menuArrowFontColor: #111;
+  --cursorBorder: #ccc;
+}
+
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+body {
+  width: 100vw;
+  /* margin-right: calc(100vw - 100%); */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+.ant-pro-sider.ant-layout-sider.ant-pro-sider-fixed {
+  left: unset;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// 兼容IE11
+@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body .ant-design-pro > .ant-layout {
+    min-height: 100vh;
+  }
+}
+
+.rcs-menu-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  overflow: auto;
+  background-color: var(--menuBG);
+  backdrop-filter: blur(12px);
+  transition: left 300ms ease;
+  z-index: 9999;
+  &.collapsed {
+    left: -269px;
+    .rcs-arrow {
+      padding-left: 2px;
+      padding-right: 0px;
+    }
+  }
+  .rcs-menu {
+    list-style: none;
+    padding: 30px;
+    .rcs-menu-item {
+      color: var(--menuFontColor);
+      font-size: 30px;
+      // border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      margin: 10px;
+      a {
+        color: inherit;
+        cursor: inherit;
+      }
+      &:hover {
+        color: #22bbff;
+      }
+      &.active {
+        color: #22bbff;
+      }
+    }
+  }
+  .rcs-arrow {
+    position: absolute;
+    right: 0;
+    width: 31px;
+    height: 31px;
+    padding-left: 0px;
+    padding-right: 2px;
+    line-height: 27px;
+    top: calc(50% - 15px);
+    font-size: 20px;
+    border: 1px solid var(--menuArrowBG);
+    border-radius: 50%;
+    text-align: center;
+    color: var(--menuArrowFontColor);
+    background-color: var(--menuArrowBG);
+    cursor: inherit;
+    box-shadow: 0 0 5px 0px var(--menuArrowBG);
+    &:hover {
+      box-shadow: 0 0 5px 1px var(--menuArrowBG);
+    }
+  }
+}
