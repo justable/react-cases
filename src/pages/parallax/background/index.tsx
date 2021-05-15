@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback, RefCallback } from 'react';
 import useDynamicScript from '@/hooks/useDynamicScript';
 import useMeasure from '@/hooks/useMeasure';
 import { widthCss } from '@/utils';
+import { container, layer1, layer2, layer3 } from './style.less';
 
 const App: React.FC = () => {
   const [sceneNode, sceneRef] = useMeasure();
@@ -38,6 +39,7 @@ const App: React.FC = () => {
 
   return (
     <div
+      className={container}
       style={{
         ...widthCss(1200),
         paddingTop: 100,
@@ -45,6 +47,7 @@ const App: React.FC = () => {
     >
       <div ref={sceneRef}>
         <canvas
+          className={layer1}
           data-depth="1.00"
           ref={canvasRef}
           width="1000"
@@ -52,12 +55,14 @@ const App: React.FC = () => {
           style={{ marginLeft: 130 }}
         ></canvas>
         <img
+          className={layer2}
           data-depth="-1.00"
           src="https://web.hycdn.cn/arknights/official/pic/20210401/fea022d62923d69453cb446ab2e983df.png"
           alt="Amiya"
           style={{ ...widthCss(750), marginLeft: 100 }}
         />
         <div
+          className={layer3}
           data-depth="-1.20"
           style={{
             fontSize: '3.13rem',

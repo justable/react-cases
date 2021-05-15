@@ -9,7 +9,7 @@ export default function useDynamicScript(url: string, globalName: string) {
     script.src = url;
     script.onload = function () {
       //@ts-ignore
-      setSource(() => window[globalName]);
+      setSource(() => window[globalName] || 'anonymous');
     };
     document.head.appendChild(script);
   }, []);

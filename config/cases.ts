@@ -24,6 +24,13 @@ const reactCases: ReactCases = {
     component: '@/pages/interaction/wave/index.tsx',
     theme: 'light',
   },
+  fwefwf: {
+    path: '/fwefwf',
+    title: 'lottie动画',
+    description: '',
+    component: '@/pages/animation/lottie/index.tsx',
+    theme: 'dark',
+  },
 };
 
 export default reactCases;

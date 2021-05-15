@@ -1,0 +1,1 @@
+lottie能够将AE（after effect软件）动画在浏览器环境运行。我们在AE软件安装bodymovin插件，它能够将AE动画输出成json格式，然后我们就能在html中借助lottie加载这个json文件播放动画。
