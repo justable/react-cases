@@ -56,7 +56,7 @@ const reactCases: ReactCases = {
     title: '砸金蛋',
     description: '',
     component: '@/pages/interaction/smash-egg/index.tsx',
-    theme: 'light',
+    theme: 'dark',
     customCursor: false,
   },
   '8l0mup': {
@@ -64,6 +64,14 @@ const reactCases: ReactCases = {
     title: 'OSS存储',
     description: '',
     component: '@/pages/interaction/upload-oss/index.tsx',
+    theme: 'light',
+    customCursor: false,
+  },
+  egrgew: {
+    path: '/egrgew',
+    title: '拍个照',
+    description: '',
+    component: '@/pages/interaction/takephoto/index.tsx',
     theme: 'light',
     customCursor: false,
   },

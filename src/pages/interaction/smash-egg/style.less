@@ -1,7 +1,17 @@
-.induced-board {
+.container {
+  background-color: #a41d17;
+  padding-bottom: 50px;
+}
+.playGround {
+  height: 780px;
+  background: url(~@/assets/images/desk_bg_bim.jpg) no-repeat center center;
+  overflow: hidden;
+}
+.playGroundInner {
   position: relative;
   overflow: hidden;
   cursor: none;
+  margin: 200px auto 0 auto;
 }
 .hammer {
   position: absolute;
@@ -24,24 +34,24 @@
     transform: rotate(0);
   }
 }
-.hammer-anim {
+.hammerAnim {
   animation-name: smash;
 }
-.golden-egg {
+.goldenEgg {
   position: absolute;
   pointer-events: none;
   cursor: none;
-  .full-egg {
+  .fullEgg {
     width: 100%;
     pointer-events: none;
     cursor: none;
   }
-  .broken-egg {
+  .brokenEgg {
     width: 100%;
     margin-top: 36%;
     cursor: none;
   }
-  .hot-zone {
+  .hotZone {
     position: absolute;
     top: 0;
     left: 21%;
