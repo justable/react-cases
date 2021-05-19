@@ -11,7 +11,7 @@ export interface CaseModelType {
   subscriptions: { setup: Subscription };
 }
 const LayoutModel: CaseModelType = {
-  namespace: 'case',
+  namespace: 'smashEgg',
   state: {
     path: '',
     title: '',

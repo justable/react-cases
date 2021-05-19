@@ -1,0 +1,60 @@
+@img: 'https://images.unsplash.com/photo-1621268274479-6f0f93323b06?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80';
+
+.container {
+  background: url(@img);
+  background-size: cover;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.editorWrapper {
+  width: 50vw;
+  margin: 10vw auto 0 auto;
+}
+
+.editor {
+  height: 300px;
+  outline: none;
+  padding: 15px;
+  letter-spacing: 1px;
+  background-color: #fff;
+  &::after {
+    content: ' ';
+  }
+  span {
+    color: #09a17b;
+  }
+  &:focus {
+    box-shadow: 0 0 20px 3px #ccc;
+  }
+}
+
+.highlight {
+  border: 1px solid #ccc;
+  box-shadow: 0 0 15px 0px #ccc;
+  border-radius: 5px;
+}
+
+.popover {
+  position: fixed;
+  width: 100px;
+  letter-spacing: 1px;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.popoverItem {
+  padding: 0 15px;
+  line-height: 40px;
+  border-top: 1px solid #ccc;
+  &:hover {
+    background: #eee;
+  }
+  &:first-child {
+    border: 0;
+  }
+}

@@ -1,4 +1,4 @@
-﻿import cases, { ReactCases } from './cases';
+﻿import cases, { ReactCases } from './reactcases.config';
 
 function generateRoutesFromConfig(config: ReactCases) {
   const keys = Object.keys(config);

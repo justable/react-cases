@@ -1,0 +1,42 @@
+@img: 'https://images.unsplash.com/photo-1593642532400-2682810df593?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80';
+
+.container {
+  background: url(@img);
+  background-size: cover;
+}
+
+.filterArea {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  height: 80px;
+  transform: translate(-50%, 0);
+  z-index: 2;
+  border-radius: 0 0 24px 24px;
+}
+
+.scrollContainer {
+  padding-top: 80px;
+  height: 100vh;
+  box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  overflow: auto;
+
+  .scrollSpin {
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+  }
+}
+
+.foodItem {
+  height: 50px;
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
+  line-height: 48px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.09);
+  border-radius: 24px;
+}

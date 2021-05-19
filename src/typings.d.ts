@@ -24,10 +24,16 @@ interface ReactCase {
   description?: string;
   component: string;
   theme: 'dark' | 'light';
+  customCursor: boolean;
 }
 
 declare let Parallax: any;
 
 declare interface RootState {
   case: object;
+}
+
+declare interface ClassAndStyleProps {
+  className?: string;
+  style?: CSSProperties;
 }

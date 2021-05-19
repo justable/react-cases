@@ -1,5 +1,9 @@
-import { message } from 'antd';
+import { message, Spin } from 'antd';
 import { createLogger } from 'redux-logger';
+
+export const initialStateConfig = {
+  loading: <Spin />,
+};
 
 export const dva = {
   config: {

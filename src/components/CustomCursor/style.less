@@ -1,10 +1,8 @@
-:global {
-  body {
-    cursor: url(https://web.hycdn.cn/arknights/official/static/cursor-inner.1d69419cb78ed4579ad9.png)
-        3 3,
-      default;
-  }
-}
+// :global {
+//   body {
+//     cursor: url(~@/assets/images/cursor-inner.png) 3 3, default;
+//   }
+// }
 .cursorContainer {
   position: absolute;
   pointer-events: none;
@@ -12,6 +10,8 @@
   transition: opacity 0.3s;
   .cursorOuter {
     position: fixed;
+    left: 0;
+    top: 0;
     border-radius: 50%;
     z-index: 999999;
     width: 36px;

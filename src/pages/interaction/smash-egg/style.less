@@ -1,0 +1,53 @@
+.induced-board {
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+.hammer {
+  position: absolute;
+  z-index: 999;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  pointer-events: none;
+}
+@keyframes smash {
+  75% {
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: rotate(20deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+.hammer-anim {
+  animation-name: smash;
+}
+.golden-egg {
+  position: absolute;
+  pointer-events: none;
+  cursor: none;
+  .full-egg {
+    width: 100%;
+    pointer-events: none;
+    cursor: none;
+  }
+  .broken-egg {
+    width: 100%;
+    margin-top: 36%;
+    cursor: none;
+  }
+  .hot-zone {
+    position: absolute;
+    top: 0;
+    left: 21%;
+    width: 62%;
+    height: 89%;
+    pointer-events: auto;
+    cursor: none;
+  }
+}

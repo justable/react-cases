@@ -11,10 +11,13 @@ export interface State {
   elY: number;
   elH: number;
   elW: number;
-  shouldShrink: boolean;
+  hit: boolean;
 }
 
-const useMouse = (ref: RefObject<Element>): State => {
+const useMouse = (
+  ref: RefObject<Element>,
+  hitTargetFn?: (elm: HTMLElement) => boolean,
+): State => {
   if (process.env.NODE_ENV === 'development') {
     if (typeof ref !== 'object' || typeof ref.current === 'undefined') {
       console.error('useMouse expects a single ref argument.');
@@ -30,7 +33,7 @@ const useMouse = (ref: RefObject<Element>): State => {
     elY: 0,
     elH: 0,
     elW: 0,
-    shouldShrink: false,
+    hit: false,
   });
 
   useEffect(() => {
@@ -46,8 +49,9 @@ const useMouse = (ref: RefObject<Element>): State => {
         const posY = top + window.pageYOffset;
         const elX = event.pageX - posX;
         const elY = event.pageY - posY;
-        const shouldShrink =
-          (event.target as HTMLElement).dataset.cursor === 'pointer';
+        const hit = hitTargetFn
+          ? hitTargetFn(event.target as HTMLElement)
+          : false;
 
         setState({
           docX: event.pageX,
@@ -58,7 +62,7 @@ const useMouse = (ref: RefObject<Element>): State => {
           elY,
           elH,
           elW,
-          shouldShrink,
+          hit,
         });
       }
     };

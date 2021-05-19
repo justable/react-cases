@@ -1,0 +1,3 @@
+onwheel监听滚轮，触底信号：scrollHeight=scrollTop+offsetHeight。
+
+使用聚焦状态来关闭模态框，主要要增加tabIndex属性

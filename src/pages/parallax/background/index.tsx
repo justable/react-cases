@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback, RefCallback } from 'react';
 import useDynamicScript from '@/hooks/useDynamicScript';
 import useMeasure from '@/hooks/useMeasure';
-import { widthCss } from '@/utils';
+import { horizontalCenter } from '@/utils';
 import { container, layer1, layer2, layer3 } from './style.less';
+import Amiya from '@/assets/images/amiya.png';
 
 const App: React.FC = () => {
   const [sceneNode, sceneRef] = useMeasure();
@@ -41,7 +42,7 @@ const App: React.FC = () => {
     <div
       className={container}
       style={{
-        ...widthCss(1200),
+        ...horizontalCenter(1200),
         paddingTop: 100,
       }}
     >
@@ -57,9 +58,9 @@ const App: React.FC = () => {
         <img
           className={layer2}
           data-depth="-1.00"
-          src="https://web.hycdn.cn/arknights/official/pic/20210401/fea022d62923d69453cb446ab2e983df.png"
+          src={Amiya}
           alt="Amiya"
-          style={{ ...widthCss(750), marginLeft: 100 }}
+          style={{ ...horizontalCenter(750), marginLeft: 100 }}
         />
         <div
           className={layer3}

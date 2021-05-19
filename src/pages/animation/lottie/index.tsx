@@ -1,23 +1,23 @@
 import { useState, useEffect, useRef, useCallback, RefCallback } from 'react';
 import useDynamicScript from '@/hooks/useDynamicScript';
 import useMeasure from '@/hooks/useMeasure';
-import { widthCss } from '@/utils';
+import { horizontalCenter } from '@/utils';
 
 const App: React.FC = () => {
   const [sceneNode, sceneRef] = useMeasure();
 
-  const [_] = useDynamicScript(
-    'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js',
-    '_',
-  );
+  // const [_] = useDynamicScript(
+  //   'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js',
+  //   '_',
+  // );
 
   const [bodymovin] = useDynamicScript(
-    'https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.9/lottie.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/lottie-web/5.7.8/lottie.min.js',
     'bodymovin',
   );
 
   useEffect(() => {
-    if (_ && bodymovin && sceneNode) {
+    if (bodymovin && sceneNode) {
       const animation = bodymovin.loadAnimation({
         container: sceneNode,
         renderer: 'svg',
@@ -26,7 +26,7 @@ const App: React.FC = () => {
         path: 'lottie-data.json',
       });
     }
-  }, [_, bodymovin, sceneNode]);
+  }, [bodymovin, sceneNode]);
 
   return (
     <div ref={sceneRef} style={{ height: '100%' }}>

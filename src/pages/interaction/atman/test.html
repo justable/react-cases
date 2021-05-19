@@ -1,0 +1,20 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>meter</title>
+  </head>
+  <body>
+    <p id="p1"><b>Hel&zwj;lo</b> World</p>
+  </body>
+  <script>
+    var oP1 = document.getElementById('p1');
+    var oHello = oP1.firstChild.firstChild;
+    var oWorld = oP1.lastChild;
+    var oRange = document.createRange();
+    var oSpan = document.createElement('span');
+    oSpan.appendChild(document.createTextNode('Inserted text'));
+    oRange.setStart(oHello, 2);
+    oRange.setEnd(oWorld, 3);
+    oRange.insertNode(oSpan);
+  </script>
+</html>

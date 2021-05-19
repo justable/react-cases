@@ -1,0 +1,55 @@
+.buttonGroup {
+  .buttonItem {
+    display: inline-block;
+    padding: 5px 25px 7px 25px;
+    font-size: 20px;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 12px;
+    user-select: none;
+    cursor: pointer;
+    &.selected {
+      color: #eb4438;
+    }
+    &.disabled {
+      color: rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+.buttonArrow {
+  color: #fff;
+  transition: transform 0.2s;
+  font-size: 20px;
+  vertical-align: middle !important;
+  margin-left: 6px;
+  pointer-events: none;
+}
+.buttonArrowExpand {
+  transform: rotate(180deg);
+}
+.modalInner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 160px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid transparent;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  padding: 8px;
+  .fruitItem {
+    padding: 2px 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      border-color: #eb4438;
+      color: #eb4438;
+    }
+  }
+  .fruitItemSelected {
+    color: #eb4438;
+  }
+}

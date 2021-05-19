@@ -17,7 +17,9 @@ export default defineConfig({
     immer: true,
     hmr: true,
   },
-  dynamicImport: {},
+  dynamicImport: {
+    loading: '@/pages/Loading',
+  },
   targets: {
     ie: 11,
   },

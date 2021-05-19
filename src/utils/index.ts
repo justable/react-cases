@@ -1,4 +1,6 @@
-export const widthCss = (width: number | string) => {
+import { dark, light } from './theme';
+
+export const horizontalCenter = (width: number | string) => {
   return {
     width,
     margin: '0 auto',
@@ -6,25 +8,8 @@ export const widthCss = (width: number | string) => {
 };
 
 export const changeTheme = (theme: ReactCase['theme']) => {
-  if (theme === 'light') {
-    document.documentElement.style.setProperty(`--bg`, '#fff');
-    document.documentElement.style.setProperty(
-      `--menuBG`,
-      'rgba(1, 1, 1, 0.08)',
-    );
-    document.documentElement.style.setProperty(`--menuFontColor`, '#111');
-    document.documentElement.style.setProperty(`--menuArrowBG`, '#111');
-    document.documentElement.style.setProperty(`--menuArrowFontColor`, '#fff');
-    document.documentElement.style.setProperty(`--cursorBorder`, '#111');
-  } else {
-    document.documentElement.style.setProperty(`--bg`, '#111');
-    document.documentElement.style.setProperty(
-      `--menuBG`,
-      'rgba(255, 255, 255, 0.08)',
-    );
-    document.documentElement.style.setProperty(`--menuFontColor`, '#fff');
-    document.documentElement.style.setProperty(`--menuArrowBG`, '#fff');
-    document.documentElement.style.setProperty(`--menuArrowFontColor`, '#111');
-    document.documentElement.style.setProperty(`--cursorBorder`, '#ccc');
-  }
+  const themeObj = theme === 'light' ? light : dark;
+  Object.entries(themeObj).forEach((t) => {
+    document.documentElement.style.setProperty(t[0], t[1]);
+  });
 };

@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useSelector } from 'umi';
 import classNames from 'classnames';
 import CustomCursor from '@/components/CustomCursor';
-import useMouse from '@/hooks/useMouse';
-import Icon, { CaretLeftOutlined, CaretRightOutlined } from '@ant-design/icons';
-import reactCases from '../../config/cases';
+import Icon, { CaretLeftOutlined, GithubOutlined } from '@ant-design/icons';
+import { Scrollbars } from 'react-custom-scrollbars';
+import reactCases from '../../config/reactcases.config';
 
 const cases = Object.entries(reactCases);
 
@@ -19,25 +19,29 @@ const Menu: React.FC = () => {
         collapsed,
       })}
     >
-      <ul className="rcs-menu">
-        {cases.map(([k, c]) => {
-          return (
-            <li
-              key={k}
-              className={classNames('rcs-menu-item', {
-                active: caseState.path === c.path,
-              })}
-              data-cursor="pointer"
-            >
-              <Link to={c.path} data-cursor="pointer">
-                {c.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="rcs-menu-wrapper">
+        <Scrollbars>
+          <ul className="rcs-menu">
+            {cases.map(([k, c]) => {
+              return (
+                <li
+                  key={k}
+                  className={classNames('rcs-menu-item', {
+                    active: caseState.path === c.path,
+                  })}
+                  data-cursor="pointer"
+                >
+                  <Link to={c.path} data-cursor="pointer">
+                    {c.title}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </Scrollbars>
+      </div>
       <div
-        className="rcs-arrow"
+        className="rcs-menu-arrow"
         onClick={() => {
           setCollapsed((state) => !state);
         }}
@@ -50,13 +54,28 @@ const Menu: React.FC = () => {
           }}
         />
       </div>
+      <div className="rcs-menu-brand">
+        <a
+          href="https://github.com/justable/react-cases"
+          target="_blank"
+          data-cursor="pointer"
+        >
+          <GithubOutlined
+            style={{
+              pointerEvents: 'none',
+            }}
+          />
+        </a>
+      </div>
     </div>
   );
 };
 
 const CaseLayout: React.FC = ({ children }) => {
-  const ref = useRef(null);
-  const { docX, docY, shouldShrink } = useMouse(ref);
+  const ref = useRef<HTMLDivElement>(null);
+  const caseState = useSelector<RootState, ReactCase>((store) => {
+    return store.case as ReactCase;
+  });
   return (
     <div
       ref={ref}
@@ -68,7 +87,7 @@ const CaseLayout: React.FC = ({ children }) => {
     >
       <Menu></Menu>
       {children}
-      <CustomCursor x={docX} y={docY} shrink={shouldShrink}></CustomCursor>
+      {/* {caseState.customCursor && <CustomCursor ground={ref}></CustomCursor>} */}
     </div>
   );
 };

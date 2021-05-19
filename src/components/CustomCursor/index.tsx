@@ -5,34 +5,42 @@ import {
   useCallback,
   RefCallback,
   MouseEvent,
+  RefObject,
 } from 'react';
+import useMouse from '@/hooks/useMouse';
 import { cursorContainer, cursorOuter } from './style.less';
 
 interface CustomCursorProps {
-  x: number;
-  y: number;
-  shrink?: boolean;
+  ground: RefObject<HTMLDivElement>;
 }
-function getStyle(x: number, y: number, shrink: boolean) {
+function getStyle(x: number, y: number, hit: boolean) {
   const style = {
     transform: 'translate3d(-50%,-50%,0)',
-    left: x,
-    top: y,
+    left: x || -40,
+    top: y || -40,
   };
-  const shrinkStyle = {
+  const hitStyle = {
     width: 20,
     height: 20,
     backgroundColor: 'rgba(255,255,255,0.5)',
   };
-  if (shrink) {
-    Object.assign(style, shrinkStyle);
+  if (hit) {
+    Object.assign(style, hitStyle);
   }
   return style;
 }
-const App: React.FC<CustomCursorProps> = ({ x, y, shrink = false }) => {
+const App: React.FC<CustomCursorProps> = ({ ground }) => {
+  const { docX, docY, hit } = useMouse(
+    ground,
+    (target) => target.dataset.cursor === 'pointer',
+  );
+
   return (
     <div className={cursorContainer}>
-      <div className={cursorOuter} style={{ ...getStyle(x, y, shrink) }}></div>
+      <div
+        className={cursorOuter}
+        style={{ ...getStyle(docX, docY, hit) }}
+      ></div>
     </div>
   );
 };
