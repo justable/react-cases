@@ -25,11 +25,17 @@ const Camera: React.FC<CameraProps> = ({
     }
     const video = videoRef.current!;
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
-        // video.src = window.URL.createObjectURL(stream);
-        video.srcObject = stream;
-        video.play();
-      });
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          // video.src = window.URL.createObjectURL(stream);
+          video.srcObject = stream;
+          video.play();
+        })
+        .catch((err) => {
+          setIsSupportMedia(false);
+          onError();
+        });
     } else {
       setIsSupportMedia(false);
       onError();
@@ -38,7 +44,7 @@ const Camera: React.FC<CameraProps> = ({
 
   return (
     <div className={styles.camera} style={{ width: width, height: height }}>
-      {isSupportMedia ? <video ref={videoRef}></video> : '未安装摄像头'}
+      {isSupportMedia && <video ref={videoRef}></video>}
       <div className={styles.highlight}></div>
     </div>
   );

@@ -4,12 +4,13 @@ import classNames from 'classnames';
 import CustomCursor from '@/components/CustomCursor';
 import Icon, { CaretLeftOutlined, GithubOutlined } from '@ant-design/icons';
 import { Scrollbars } from 'react-custom-scrollbars';
+import { isMobile } from '@/utils';
 import reactCases from '../../config/reactcases.config';
 
 const cases = Object.entries(reactCases);
 
 const Menu: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(isMobile());
   const caseState = useSelector<RootState, ReactCase>((store) => {
     return store.case as ReactCase;
   });
@@ -20,7 +21,7 @@ const Menu: React.FC = () => {
       })}
     >
       <div className="rcs-menu-wrapper">
-        <Scrollbars>
+        <Scrollbars autoHide>
           <ul className="rcs-menu">
             {cases.map(([k, c]) => {
               return (

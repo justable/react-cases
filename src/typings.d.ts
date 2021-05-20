@@ -28,6 +28,8 @@ interface ReactCase {
 }
 
 declare let Parallax: any;
+declare let ALIYUN_ID: string;
+declare let ALIYUN_SECRET: string;
 
 declare interface RootState {
   case: object;

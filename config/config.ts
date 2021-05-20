@@ -6,9 +6,15 @@ import routes from './routes';
 
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
-const { NODE_ENV } = process.env;
+const { NODE_ENV, ALIYUN_ID, ALIYUN_SECRET } = process.env;
+
+console.log(ALIYUN_ID);
 
 export default defineConfig({
+  define: {
+    ALIYUN_ID,
+    ALIYUN_SECRET,
+  },
   base: NODE_ENV === 'production' ? '/reactcases/' : '/',
   publicPath: NODE_ENV === 'production' ? '/reactcases/' : '/',
   hash: true,

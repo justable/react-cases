@@ -58,7 +58,7 @@ function AutoScroll<P>(props: AutoScrollProps<P>) {
       timer = setInterval(() => {
         setIsScroll(true);
         setTimeout(() => {
-          // 趁动画间隙替换数据
+          // 趁动画结束间隙替换数据
           nextVisibleList();
           setIsScroll(false);
         }, scrollSpeed);

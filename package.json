@@ -23,6 +23,7 @@
     "@ant-design/icons": "^4.6.2",
     "@ant-design/pro-layout": "^6.5.0",
     "@umijs/preset-react": "1.x",
+    "ali-oss": "^6.15.2",
     "bowser": "^2.11.0",
     "classnames": "^2.3.1",
     "js-cookie": "^2.2.1",
@@ -33,6 +34,7 @@
     "umi": "^3.4.20"
   },
   "devDependencies": {
+    "@types/ali-oss": "^6.0.8",
     "@types/classnames": "^2.3.1",
     "@types/js-cookie": "^2.2.6",
     "@types/lodash": "^4.14.169",

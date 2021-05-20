@@ -13,3 +13,18 @@ export const changeTheme = (theme: ReactCase['theme']) => {
     document.documentElement.style.setProperty(t[0], t[1]);
   });
 };
+
+export const isMobile = () => {
+  const userAgentInfo = navigator.userAgent;
+  const mobileAgents = [
+    'Android',
+    'iPhone',
+    'SymbianOS',
+    'Windows Phone',
+    'iPad',
+    'iPod',
+  ];
+  return mobileAgents.reduce((_, word) => {
+    return _ || userAgentInfo.indexOf(word) > -1;
+  }, false);
+};

@@ -87,7 +87,7 @@ const App: React.FC = () => {
       <div
         ref={wrapperRef}
         className={styles.scrollContainer}
-        style={horizontalCenter(900)}
+        style={horizontalCenter('60vw')}
         onWheel={handleWheel}
       >
         <div className={styles.scrollBody}>
