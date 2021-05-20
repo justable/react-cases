@@ -26,7 +26,7 @@ const App: React.FC = () => {
     if (Parallax && sceneNode && canvasNode) {
       // 更多配置参数参考https://github.com/wagerfield/parallax/blob/master/README.md
       new Parallax(sceneNode, {
-        onReady: () => console.log('Parallax is ready to go now!'),
+        onReady: () => {},
         hoverOnly: false,
         relativeInput: false,
         clipRelativeInput: true,

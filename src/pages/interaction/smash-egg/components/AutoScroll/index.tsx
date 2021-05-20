@@ -27,7 +27,6 @@ function useVisibleList<P>(
     if (nextList.length < length) {
       nextList = [...nextList, ...list.slice(0, length - nextList.length)];
     }
-    console.log(nextList);
     setVisibleList(nextList);
     setAnimateTimes((prevState) => prevState + 1);
   }
