@@ -2,12 +2,17 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useSelector } from 'umi';
 import classNames from 'classnames';
 import CustomCursor from '@/components/CustomCursor';
+import { message } from 'antd';
 import Icon, { CaretLeftOutlined, GithubOutlined } from '@ant-design/icons';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { isMobile } from '@/utils';
 import reactCases from '../../config/reactcases.config';
 
 const cases = Object.entries(reactCases);
+
+if (isMobile()) {
+  message.warn('为了更好的体验请在PC上访问');
+}
 
 const Menu: React.FC = () => {
   const [collapsed, setCollapsed] = useState(isMobile());

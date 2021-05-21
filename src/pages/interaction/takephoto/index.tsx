@@ -41,20 +41,17 @@ const App: React.FC = () => {
               canvasRef={canvasRef}
               actionCount={actionCount}
             />
-            <p className={styles.title}>考试头像</p>
+            <p className={styles.title}>生成头像</p>
             {isCamera ? (
-              <p className={styles.subtitle}>
-                为了保证考试正常进行，请先安装摄像头设备！
-              </p>
+              <p className={styles.subtitle}>点击确定后会生成dataUrl</p>
             ) : (
-              <p className={styles.subtitle}>
-                电脑未安装摄像头,请安装摄像头设备
-              </p>
+              <p className={styles.subtitle}>未检测到摄像头</p>
             )}
             <div className={styles.actions}>
               <Button
                 type="primary"
                 size="large"
+                disabled={!isCamera}
                 onClick={() => onPhotoConfirm(canvasRef)}
               >
                 确定
