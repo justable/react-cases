@@ -5,8 +5,6 @@ import _ from 'lodash';
 import foods, { Food } from './foods';
 import FilterTool, { onSelectProps } from './components/FilterTool';
 import styles from './style.less';
-import { Scrollbars } from 'react-custom-scrollbars';
-import useMeasure from '@/hooks/useMeasure';
 
 // 80是paddingTop设了80
 const scrollBottomThreshold = 80 + 400;

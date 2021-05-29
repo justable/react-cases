@@ -3,6 +3,7 @@
   "scripts": {
     "start": "cross-env UMI_ENV=dev umi dev",
     "build": "umi build",
+    "build:ssr": "cross-env UMI_ENV=ssr umi build",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
@@ -31,11 +32,11 @@
     "react-custom-scrollbars": "^4.2.1",
     "react-dev-inspector": "^1.5.3",
     "redux-logger": "^3.0.6",
-    "umi": "^3.4.20"
+    "umi": "^3.4.23"
   },
   "devDependencies": {
     "@types/ali-oss": "^6.0.8",
-    "@types/classnames": "^2.3.1",
+    "@types/antd": "^1.0.0",
     "@types/js-cookie": "^2.2.6",
     "@types/lodash": "^4.14.169",
     "@types/react": "^17.0.0",

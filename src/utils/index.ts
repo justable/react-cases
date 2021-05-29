@@ -1,3 +1,4 @@
+import { isBrowser } from 'umi';
 import { dark, light } from './theme';
 
 export const horizontalCenter = (width: number | string) => {
@@ -15,6 +16,9 @@ export const changeTheme = (theme: ReactCase['theme']) => {
 };
 
 export const isMobile = () => {
+  if (!isBrowser()) {
+    return false;
+  }
   const userAgentInfo = navigator.userAgent;
   const mobileAgents = [
     'Android',

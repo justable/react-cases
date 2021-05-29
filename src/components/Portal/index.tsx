@@ -1,5 +1,6 @@
 import { ComponentType, Component } from 'react';
 import ReactDOM from 'react-dom';
+import { isBrowser } from 'umi';
 
 export function withPortal<P>(C: ComponentType<P>) {
   return class extends Component<P> {
@@ -7,7 +8,7 @@ export function withPortal<P>(C: ComponentType<P>) {
 
     constructor(props: P) {
       super(props);
-      if (!this.root) {
+      if (!this.root && isBrowser()) {
         this.root = document.createElement('div');
         document.body.appendChild(this.root);
       }
@@ -26,8 +27,10 @@ export function withPortal<P>(C: ComponentType<P>) {
     }
 
     render() {
-      return (
-        this.root && ReactDOM.createPortal(this.renderContent(), this.root)
+      return this.root ? (
+        ReactDOM.createPortal(this.renderContent(), this.root)
+      ) : (
+        <p>加载中...</p>
       );
     }
   };

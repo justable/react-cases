@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useSelector } from 'umi';
+import { isBrowser, Link, useSelector } from 'umi';
 import classNames from 'classnames';
 import CustomCursor from '@/components/CustomCursor';
-import { message } from 'antd';
+import { message, Spin } from 'antd';
 import Icon, { CaretLeftOutlined, GithubOutlined } from '@ant-design/icons';
-import { Scrollbars } from 'react-custom-scrollbars';
-import { isMobile } from '@/utils';
+import Scrollbars, { renderLoading } from '@/components/CustomScrollbars';
+import { isMobile, changeTheme } from '@/utils';
 import reactCases from '../../config/reactcases.config';
 
 const cases = Object.entries(reactCases);
@@ -26,25 +26,29 @@ const Menu: React.FC = () => {
       })}
     >
       <div className="rcs-menu-wrapper">
-        <Scrollbars autoHide>
-          <ul className="rcs-menu">
-            {cases.map(([k, c]) => {
-              return (
-                <li
-                  key={k}
-                  className={classNames('rcs-menu-item', {
-                    active: caseState.path === c.path,
-                  })}
-                  data-cursor="pointer"
-                >
-                  <Link to={c.path} data-cursor="pointer">
-                    {c.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </Scrollbars>
+        {isBrowser() ? (
+          <Scrollbars autoHide>
+            <ul className="rcs-menu">
+              {cases.map(([k, c]) => {
+                return (
+                  <li
+                    key={k}
+                    className={classNames('rcs-menu-item', {
+                      active: caseState.path === c.path,
+                    })}
+                    data-cursor="pointer"
+                  >
+                    <Link to={c.path} data-cursor="pointer">
+                      {c.title}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </Scrollbars>
+        ) : (
+          renderLoading()
+        )}
       </div>
       <div
         className="rcs-menu-arrow"
@@ -82,6 +86,9 @@ const CaseLayout: React.FC = ({ children }) => {
   const caseState = useSelector<RootState, ReactCase>((store) => {
     return store.case as ReactCase;
   });
+  useEffect(() => {
+    changeTheme(caseState.theme);
+  }, [caseState.theme]);
   return (
     <div
       ref={ref}

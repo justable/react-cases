@@ -1,5 +1,4 @@
 import { Effect, ImmerReducer, Reducer, Subscription } from 'umi';
-import { changeTheme } from '@/utils';
 import reactCases from '../../config/reactcases.config';
 
 export interface CaseModelType {
@@ -22,7 +21,6 @@ const LayoutModel: CaseModelType = {
   },
   reducers: {
     changeCase(state, action) {
-      changeTheme(action.payload.theme);
       Object.assign(state, action.payload);
     },
   },

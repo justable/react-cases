@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { isBrowser } from 'umi';
 
 export default function useDynamicScript(url: string, globalName: string) {
-  //@ts-ignore
-  const [source, setSource] = useState(() => window[globalName]);
+  const [source, setSource] = useState(() =>
+    //@ts-ignore
+    isBrowser() ? window[globalName] : '',
+  );
   useEffect(() => {
     if (source) return;
     const script = document.createElement('script');

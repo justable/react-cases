@@ -71,7 +71,7 @@ const reactCases: ReactCases = {
     path: '/egrgew',
     title: '拍个照',
     description: '',
-    component: '@/pages/interaction/takephoto/index.tsx',
+    component: '@/pages/interaction/takephotos/index.tsx',
     theme: 'light',
     customCursor: false,
   },

@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
+import { isBrowser } from 'umi';
 import useRafState from './useRafState';
 
 const useWindowSize = () => {
   const [state, setState] = useRafState<{ width: number; height: number }>({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: isBrowser() ? window.innerWidth : 0,
+    height: isBrowser() ? window.innerHeight : 0,
   });
 
   useEffect((): (() => void) | void => {
