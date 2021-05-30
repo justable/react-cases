@@ -5,5 +5,7 @@ export default defineConfig({
     devServerRender: false,
   },
   hash: false,
+  base: '/',
+  publicPath: '/',
   // dynamicImport: false,
 });
