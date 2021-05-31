@@ -9,7 +9,7 @@ export const renderLoading = () => (
 
 export default dynamic({
   loader: async () => {
-    // // 这里的注释 webpackChunkName 可以指导 webpack 将该组件 react-custom-scrollbars 以这个名字单独拆出去
+    // 这里的注释 webpackChunkName 可以指导 webpack 将 react-custom-scrollbars 组件以这个名字的chunk单独拆分出去
     const { Scrollbars } = await import(
       /* webpackChunkName: "react-custom-scrollbars" */ 'react-custom-scrollbars'
     );
