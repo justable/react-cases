@@ -22,14 +22,10 @@ const App: React.FC<FilterToolProps> = ({ onSelect }) => {
   const [selectedFoodType, setSelectedFoodType] = useState('');
   const [selectedFruitName, setSelectedFruitName] = useState('名称');
   const [modalButtonNode, modalButtonRef] = useMeasure<HTMLDivElement>();
-  const [modalNode, modalRef] = useMeasure<HTMLDivElement>();
 
   const handleClickButton = (food: Partial<Food> & { modal?: boolean }) => {
     if (food.modal) {
       setModalVisible((prevState) => !prevState);
-      setTimeout(() => {
-        modalNode?.focus();
-      }, 0);
       return;
     }
     if (food.type) {
@@ -51,7 +47,7 @@ const App: React.FC<FilterToolProps> = ({ onSelect }) => {
     onSelect({ filterBy: 'fruitName', food });
   };
 
-  const handleModalBlur = () => {
+  const handleBlur = () => {
     setModalVisible(false);
   };
 
@@ -93,13 +89,12 @@ const App: React.FC<FilterToolProps> = ({ onSelect }) => {
           })}
         />
       </div>
-      <TraceModal visible={modalVisible} trigger={modalButtonNode}>
-        <div
-          tabIndex={0}
-          className={styles.modalInner}
-          onBlur={handleModalBlur}
-          ref={modalRef}
-        >
+      <TraceModal
+        visible={modalVisible}
+        trigger={modalButtonNode}
+        onBlur={handleBlur}
+      >
+        <div className={styles.modalInner}>
           {fruits.map((fruit, idx) => {
             return (
               <div

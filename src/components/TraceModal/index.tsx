@@ -1,9 +1,11 @@
+// @ts-nocheck
 import React from 'react';
 import { withPortal } from '@/components/Portal';
 
 export interface TraceModalProps {
   visible: boolean;
   trigger: HTMLElement | Range | null;
+  onBlur?(): void;
   onSelect?(): void;
   onOk?(): void;
   oncancel?(): void;
@@ -18,6 +20,12 @@ class TraceModal extends React.Component<TraceModalProps, TraceModalState> {
     left: 0,
     top: 0,
   };
+
+  constructor(props) {
+    super(props);
+    this.modalInnerRef = React.createRef();
+  }
+
   static getDerivedStateFromProps(props: TraceModalProps) {
     const { visible, trigger } = props;
     if (visible && trigger) {
@@ -37,20 +45,41 @@ class TraceModal extends React.Component<TraceModalProps, TraceModalState> {
     }
     return null;
   }
+
+  componentDidUpdate() {
+    const { visible } = this.props;
+    if (visible) {
+      setTimeout(() => this.modalInnerRef.current.focus(), 0);
+    }
+  }
+
+  handleModalBlur = () => {
+    const { onBlur } = this.props;
+    onBlur && onBlur();
+  };
+
   render() {
     const { visible } = this.props;
     const { left, top } = this.state;
     return (
-      <div
-        style={{
-          position: 'fixed',
-          zIndex: 1050,
-          left,
-          top,
-          display: visible ? 'block' : 'none',
-        }}
-      >
-        {this.props.children}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
+        <div
+          style={{
+            position: 'fixed',
+            zIndex: 1050,
+            left,
+            top,
+            display: visible ? 'block' : 'none',
+          }}
+        >
+          <div
+            tabIndex={0}
+            ref={this.modalInnerRef}
+            onBlur={this.handleModalBlur}
+          >
+            {this.props.children}
+          </div>
+        </div>
       </div>
     );
   }

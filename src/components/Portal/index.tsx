@@ -19,11 +19,7 @@ export function withPortal<P>(C: ComponentType<P>) {
     }
 
     renderContent() {
-      return (
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-          <C {...this.props} />
-        </div>
-      );
+      return <C {...this.props} />;
     }
 
     render() {
