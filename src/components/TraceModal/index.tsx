@@ -76,6 +76,7 @@ class TraceModal extends React.Component<TraceModalProps, TraceModalState> {
             tabIndex={0}
             ref={this.modalInnerRef}
             onBlur={this.handleModalBlur}
+            style={{ outline: 'none' }}
           >
             {this.props.children}
           </div>

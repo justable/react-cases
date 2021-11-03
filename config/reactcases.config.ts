@@ -59,14 +59,14 @@ const reactCases: ReactCases = {
     theme: 'dark',
     customCursor: false,
   },
-  '8l0mup': {
-    path: '/8l0mup',
-    title: 'OSS存储',
-    description: '',
-    component: '@/pages/interaction/upload-oss/index.tsx',
-    theme: 'light',
-    customCursor: false,
-  },
+  // '8l0mup': {
+  //   path: '/8l0mup',
+  //   title: 'OSS存储',
+  //   description: '',
+  //   component: '@/pages/interaction/upload-oss/index.tsx',
+  //   theme: 'light',
+  //   customCursor: false,
+  // },
   egrgew: {
     path: '/egrgew',
     title: '拍个照',
