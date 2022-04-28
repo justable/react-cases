@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "cross-env UMI_ENV=dev umi dev",
+    "dev": "cross-env UMI_ENV=dev umi dev",
     "build": "umi build",
     "build:ssr": "cross-env UMI_ENV=ssr umi build",
     "postinstall": "umi generate tmp",
@@ -23,6 +23,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@ant-design/pro-layout": "^6.5.0",
+    "@antv/g6": "^4.6.4",
     "@umijs/preset-react": "1.x",
     "ali-oss": "^6.15.2",
     "bowser": "^2.11.0",

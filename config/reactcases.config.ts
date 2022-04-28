@@ -75,6 +75,14 @@ const reactCases: ReactCases = {
     theme: 'light',
     customCursor: false,
   },
+  fbajkf: {
+    path: '/fbajkf',
+    title: 'G6 紧凑辐射树',
+    description: 'G6 Radialtree',
+    component: '@/pages/vision/G6/index.tsx',
+    theme: 'light',
+    customCursor: false,
+  },
 };
 
 export default reactCases;
