@@ -15,7 +15,8 @@ if (isMobile()) {
 }
 
 const Menu: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(isMobile());
+  // const [collapsed, setCollapsed] = useState(isMobile());
+  const [collapsed, setCollapsed] = useState(true);
   const caseState = useSelector<RootState, ReactCase>((store) => {
     return store.case as ReactCase;
   });
@@ -65,7 +66,7 @@ const Menu: React.FC = () => {
         />
       </div>
       <div className="rcs-menu-brand">
-        <a
+        {/* <a
           href="https://github.com/justable/react-cases"
           target="_blank"
           data-cursor="pointer"
@@ -75,7 +76,7 @@ const Menu: React.FC = () => {
               pointerEvents: 'none',
             }}
           />
-        </a>
+        </a> */}
       </div>
     </div>
   );

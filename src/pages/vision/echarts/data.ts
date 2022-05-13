@@ -31,11 +31,6 @@ interface BaseNode {
   id: string;
   name: string;
   children?: GraphNode[];
-  collapsed?: boolean;
-}
-
-interface EllipsisNode extends BaseNode {
-  isEllipsis: boolean;
 }
 
 interface AttachmentNode extends BaseNode {
@@ -80,12 +75,11 @@ export type GraphNode =
   | VirtualNode
   | AdvancedInstanceNode
   | InstanceNode
-  | AttachmentNode
-  | EllipsisNode;
+  | AttachmentNode;
 
 let total = 0;
 
-export function uuid(prefix?: string) {
+function uuid(prefix?: string) {
   total = total + 1;
   return _.uniqueId(prefix);
 }
@@ -149,10 +143,10 @@ function createAdvancedInstanceNode(
   instanceType: string,
 ): AdvancedInstanceNode {
   const node = createInstanceNode(instanceType);
-  const refs = new Array(_.random(1, 20)).fill(null).map(() => {
+  const refs = new Array(_.random(0, 2)).fill(null).map(() => {
     return createInstanceNode();
   });
-  const attachments = new Array(_.random(1, 20)).fill(null).map(() => {
+  const attachments = new Array(_.random(0, 2)).fill(null).map(() => {
     return createAttachmentNode();
   });
   const children = [...refs, ...attachments];
@@ -162,7 +156,6 @@ function createAdvancedInstanceNode(
     behavior: randomOne(['structure', 'relation', 'image']) as InstanceBehavior,
     refs,
     attachments,
-    // collapsed: true,
   };
   if (children.length) {
     result.children = children;
@@ -189,29 +182,18 @@ function createVirtualNode(
 
 function createRootNode(): RootNode {
   const uid = uuid('凭证_');
-  let children = [
-    createVirtualNode({ name: '发票', count: 14 }),
-    createVirtualNode({ name: '承兑汇票', count: 52 }),
-    createVirtualNode({ name: '银行回单', count: 14 }),
-    createVirtualNode({ name: '银行流水', count: 24 }),
-    createVirtualNode({ name: '综合业务', count: 12 }),
-    createVirtualNode({ name: '采购业务', count: 24 }),
-    createVirtualNode({ name: '报销业务', count: 13 }),
-    createVirtualNode({ name: '销售业务', count: 25 }),
-    createVirtualNode({ name: '物流业务', count: 15 }),
-    createVirtualNode({ name: '库存业务', count: 26 }),
-    createVirtualNode({ name: '自定义1', count: 17 }),
-    createVirtualNode({ name: '自定义2', count: 58 }),
-    createVirtualNode({ name: '自定义3', count: 19 }),
-    createVirtualNode({ name: '自定义4', count: 25 }),
-    createVirtualNode({ name: '自定义5', count: 16 }),
-    createVirtualNode({ name: '自定义6', count: 24 }),
-    createVirtualNode({ name: '自定义7', count: 16 }),
-    createVirtualNode({ name: '自定义8', count: 24 }),
-    createVirtualNode({ name: '自定义9', count: 16 }),
-    createVirtualNode({ name: '自定义10', count: 27 }),
+  const children = [
+    createVirtualNode({ name: '发票', count: 1 }),
+    createVirtualNode({ name: '承兑汇票', count: 2 }),
+    createVirtualNode({ name: '银行回单', count: 5 }),
+    createVirtualNode({ name: '银行流水', count: 2 }),
+    createVirtualNode({ name: '综合业务', count: 1 }),
+    createVirtualNode({ name: '采购业务', count: 2 }),
+    createVirtualNode({ name: '报销业务', count: 1 }),
+    createVirtualNode({ name: '销售业务', count: 2 }),
+    createVirtualNode({ name: '物流业务', count: 1 }),
+    createVirtualNode({ name: '库存业务', count: 2 }),
   ];
-
   return {
     id: uid,
     name: uid,
@@ -220,25 +202,31 @@ function createRootNode(): RootNode {
   };
 }
 
-interface GraphEdge {
+interface GraphLink {
   source: string;
   target: string;
 }
-export interface GraphDataObject {
+
+interface GraphCategory {
+  name: string;
+}
+
+export interface GraphDataResponse {
   total: number;
   treeRootNode?: GraphNode;
+  categories?: GraphCategory[];
   nodes?: GraphNode[];
-  edges?: GraphEdge[];
+  links?: GraphLink[];
 }
 
 function transformTreeNode(node: RootNode) {
   let nodes: GraphNode[] = [];
-  let edges: GraphEdge[] = [];
+  let links: GraphLink[] = [];
 
   function _transformTreeNode(n: GraphNode, parentId: string) {
     nodes.push(Object.assign({}, n, { children: [] }));
     if (n.id !== parentId) {
-      edges.push({
+      links.push({
         source: n.id,
         target: parentId,
       });
@@ -253,13 +241,25 @@ function transformTreeNode(node: RootNode) {
 
   return {
     nodes,
-    edges,
+    links,
+    categories: [
+      { name: '发票' },
+      { name: '承兑汇票' },
+      { name: '银行回单' },
+      { name: '银行流水' },
+      { name: '综合业务' },
+      { name: '采购业务' },
+      { name: '报销业务' },
+      { name: '销售业务' },
+      { name: '物流业务' },
+      { name: '库存业务' },
+    ],
   };
 }
 
-export function mockData(mode?: string): GraphDataObject {
+export function mockData(mode?: string): GraphDataResponse {
   const treeNode = createRootNode();
-  const result: GraphDataObject = {
+  const result: GraphDataResponse = {
     total,
   };
 
